@@ -10,3 +10,8 @@
 .thumbnail .captions-full {
     padding: 10px;
 }
+
+.deleteForm {
+    /* display delete button on campground show form */
+    display: inline;
+}

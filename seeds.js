@@ -30,39 +30,39 @@ function seedDB(){
 
     //Remove all campgrounds
     Campground.deleteMany({}, (err) => {
-        if(err){
-            console.log(err);
-        } else {
-            console.log("Campgrounds removed.")
+        // if(err){
+        //     console.log(err);
+        // } else {
+        //     console.log("Campgrounds removed.")
             
-            //add campgrounds
-            data.forEach((seed) => {
-                Campground.create(seed, (err, campground) => {
-                    if(err){
-                        console.log(err);
-                    } else {
-                        console.log("Added campground.");
-                        //add a comment
-                        Comment.create(
-                            {
-                                text: "Come check this out and leave your phone at home for the trip.  It's awesome and relaxing here.",
-                                author: "A Guy"
-                            }, (err, comment) =>
-                            {
-                                if(err){
-                                    console.log(err);
-                                } else {
-                                    campground.comments.push(comment);
-                                    campground.save();
-                                    console.log("Created new comment");
-                                }
+        //     //add campgrounds
+        //     data.forEach((seed) => {
+        //         Campground.create(seed, (err, campground) => {
+        //             if(err){
+        //                 console.log(err);
+        //             } else {
+        //                 console.log("Added campground.");
+        //                 //add a comment
+        //                 Comment.create(
+        //                     {
+        //                         text: "Come check this out and leave your phone at home for the trip.  It's awesome and relaxing here.",
+        //                         author: "A Guy"
+        //                     }, (err, comment) =>
+        //                     {
+        //                         if(err){
+        //                             console.log(err);
+        //                         } else {
+        //                             campground.comments.push(comment);
+        //                             campground.save();
+        //                             console.log("Created new comment");
+        //                         }
 
-                            }
-                        );
-                    }
-                });
-            });
-        }
+        //                     }
+        //                 );
+        //             }
+        //         });
+        //     });
+        // }
     });
 
 
