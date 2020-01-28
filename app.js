@@ -26,13 +26,13 @@ app.use(flash());
 
 //mongoose setup
 
-const dbAddress = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@cluster0-enrmw.mongodb.net/test?retryWrites=true&w=majority";
-
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.set("useFindAndModify", false);
 //mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect(dbAddress);
+
+var url = process.env.DATBASEURL || "mongodb://localhost/yelp_camp";
+mongoose.connect(url);
 
  
 //seedDB();  //SEED DATABASE
@@ -65,4 +65,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 //     console.log("YelpCamp server on 3000");
 // });
 
-app.listen(process.env.PORT);
+var port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log("YelpCamp server running");
+});
