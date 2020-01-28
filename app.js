@@ -1,5 +1,6 @@
 const express               = require("express"),
       app                   = express(),
+      dotenv                = require("dotenv").config(),
       bodyParser            = require("body-parser"),
       mongoose              = require("mongoose"),
       passport              = require("passport"),
@@ -22,10 +23,17 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+
+//mongoose setup
+
+const dbAddress = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@cluster0-enrmw.mongodb.net/test?retryWrites=true&w=majority";
+
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.set("useFindAndModify", false);
-mongoose.connect("mongodb://localhost/yelp_camp");
+//mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect(dbAddress);
+
  
 //seedDB();  //SEED DATABASE
 
