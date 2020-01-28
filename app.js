@@ -31,7 +31,7 @@ mongoose.set("useUnifiedTopology", true);
 mongoose.set("useFindAndModify", false);
 //mongoose.connect("mongodb://localhost/yelp_camp");
 
-var url = process.env.DATBASEURL || "mongodb://localhost/yelp_camp";
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
 mongoose.connect(url);
 
  
